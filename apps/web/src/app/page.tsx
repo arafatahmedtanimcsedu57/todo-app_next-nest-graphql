@@ -48,8 +48,18 @@ const DELETE_TODO = gql`
   }
 `;
 
+type Todo = {
+  id: number;
+  title: string;
+  completed: boolean;
+};
+
+type TodosQueryResult = {
+  todos: Todo[];
+};
+
 export default function Page() {
-  const { data, loading, error, refetch } = useQuery(GET_TODOS);
+  const { data, loading, error, refetch } = useQuery<TodosQueryResult>(GET_TODOS);
   const [title, setTitle] = useState("");
 
   const [createTodo, { loading: creating }] = useMutation(CREATE_TODO, {
@@ -102,7 +112,7 @@ export default function Page() {
             <p className="text-sm text-red-600">Error: {error.message}</p>
           ) : (
             <ul className="space-y-2">
-              {(data?.todos ?? []).map((t: any) => (
+              {( data?.todos ?? []).map((t: any) => (
                 <li key={t.id} className="flex items-center gap-3">
                   <Checkbox
                     checked={t.completed}
