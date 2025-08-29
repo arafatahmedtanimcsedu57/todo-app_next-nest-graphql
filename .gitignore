@@ -1,0 +1,11 @@
+node_modules
+.turbo
+dist
+.next
+.env
+.env.*
+coverage
+# framework outputs
+apps/**/dist
+apps/**/.next
+apps/**/node_modules
