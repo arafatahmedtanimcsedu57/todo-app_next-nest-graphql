@@ -3,12 +3,8 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule } from '@nestjs/config';
 import { join } from 'path';
-import { TodoController } from './todo/todo.controller';
 import { TodoModule } from './todo/todo.module';
-import { PrismaService } from './prisma/prisma.service';
 import { PrismaModule } from './prisma/prisma.module';
-import { PriorityController } from './priority/priority.controller';
-import { PriorityResolver } from './priority/priority.resolver';
 import { PriorityModule } from './priority/priority.module';
 
 @Module({
@@ -28,7 +24,7 @@ import { PriorityModule } from './priority/priority.module';
     PrismaModule,
     PriorityModule,
   ],
-  controllers: [TodoController, PriorityController],
-  providers: [PrismaService, PriorityResolver],
+  // controllers: [TodoController, PriorityController],
+  // providers: [PrismaService, PriorityResolver],
 })
 export class AppModule {}
