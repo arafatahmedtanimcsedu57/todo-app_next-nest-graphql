@@ -9,7 +9,7 @@ async function bootstrap() {
   app.enableVersioning({ type: VersioningType.URI, defaultVersion: '1' });
 
   app.enableCors({
-    origin: process.env.CORS_ORIGIN?.split(',') ?? ['http://localhost:3000'],
+    origin: process.env.CORS_ORIGIN?.split(',') ?? ['http://localhost:3001'],
     credentials: true,
   });
 

@@ -1,4 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Priority } from '../priority/priority.model';
 
 @ObjectType()
 export class Todo {
@@ -16,4 +17,10 @@ export class Todo {
 
   @Field()
   updatedAt: Date;
+
+  @Field(() => Int, { nullable: true })
+  priorityId?: number | null;
+
+  @Field(() => Priority, { nullable: true })
+  priority?: Priority | null;
 }

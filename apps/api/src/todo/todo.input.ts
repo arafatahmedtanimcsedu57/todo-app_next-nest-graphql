@@ -14,6 +14,12 @@ export class CreateTodoInput {
   @IsString()
   @MinLength(1)
   title: string;
+
+  @Field(() => Int, { nullable: true })
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  priorityId?: number | null;
 }
 
 @InputType()
@@ -34,4 +40,10 @@ export class UpdateTodoInput {
   @IsOptional()
   @IsBoolean()
   completed?: boolean;
+
+  @Field(() => Int, { nullable: true })
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  priorityId?: number | null;
 }

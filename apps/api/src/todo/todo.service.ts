@@ -7,11 +7,14 @@ export class TodoService {
   constructor(private prisma: PrismaService) {}
 
   list() {
-    return this.prisma.todo.findMany({ orderBy: { createdAt: 'desc' } });
+    return this.prisma.todo.findMany({
+      orderBy: { createdAt: 'desc' },
+      include: { priority: true },
+    });
   }
 
-  create(title: string) {
-    return this.prisma.todo.create({ data: { title } });
+  create(data: Prisma.TodoCreateInput) {
+    return this.prisma.todo.create({ data });
   }
 
   update(id: number, data: Prisma.TodoUpdateInput) {

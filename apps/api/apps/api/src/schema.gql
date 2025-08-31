@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 input CreateTodoInput {
+  priorityId: Int
   title: String!
 }
 
@@ -18,6 +19,14 @@ type Mutation {
   updateTodo(input: UpdateTodoInput!): Todo!
 }
 
+type Priority {
+  color: String!
+  createdAt: DateTime!
+  id: Int!
+  title: String!
+  updatedAt: DateTime!
+}
+
 type Query {
   todos: [Todo!]!
 }
@@ -26,6 +35,8 @@ type Todo {
   completed: Boolean!
   createdAt: DateTime!
   id: Int!
+  priority: Priority
+  priorityId: Int
   title: String!
   updatedAt: DateTime!
 }
@@ -33,5 +44,6 @@ type Todo {
 input UpdateTodoInput {
   completed: Boolean
   id: Int!
+  priorityId: Int
   title: String
 }
